@@ -2,11 +2,14 @@ import fs from 'fs';
 import ytdl from 'youtube-dl';
 import express from 'express';
 import path from 'path';
+import axios from 'axios';
 
 //Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
 const DOWNLOAD_DIR = path.resolve(__dirname + '/../../downloads/');
+const YOUTUBE_API_KEY = "AIzaSyAihlKnwXV_zqg7Sn2TBsZHKwPglURaqBA";
+
 
 // App
 const app = express();
