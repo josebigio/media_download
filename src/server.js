@@ -53,4 +53,3 @@ const getFilePathIfExists = (videoId) => {
     const filePath = `${DOWNLOAD_DIR}/${videoId}.mp3`
     return fs.existsSync(filePath) ? filePath : null;
 }
-
