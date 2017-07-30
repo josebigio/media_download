@@ -23,15 +23,15 @@ app.get('/audio', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-    const query = req.param('query')
+    const query = req.param('q')
     if (!query) {
-        res.send("missing querry param");
+        res.send("missing querry param q");
         return;
     }
     searchPodCast(query, 5)
         .then(response => {
             const result = {
-                items: response
+                results: response
             }
             res.send(result);
         })

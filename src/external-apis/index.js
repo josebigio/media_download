@@ -20,4 +20,3 @@ export const searchPodCast = (query, maxResults = 5) => {
         });
 }
 
-// https://www.googleapis.com/youtube/v3/search?key=AIzaSyAihlKnwXV_zqg7Sn2TBsZHKwPglURaqBA&part=snippet&q=helicopter&order=date&maxResults=5
