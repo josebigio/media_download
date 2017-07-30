@@ -1,6 +1,6 @@
 import path from 'path'
 
-export const DOWNLOAD_DIR = path.resolve(__dirname + '/../../downloads/');
+export const DOWNLOAD_DIR = path.resolve(__dirname + '/../../../downloads/');
 export const AUDIO_EXTENSION_FORMAT = "mp3"
 
 export const PORT = 8080;

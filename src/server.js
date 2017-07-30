@@ -2,7 +2,7 @@ import express from 'express';
 
 import { getVideo } from './utils'
 import { PORT, HOST } from './constants'
-import { searchPodCast } from './external-apis'
+import { searchVideo } from './external-apis'
 
 // App
 const app = express();
@@ -28,7 +28,7 @@ app.get('/search', (req, res) => {
         res.send("missing querry param q");
         return;
     }
-    searchPodCast(query, 5)
+    searchVideo(query, 10)
         .then(response => {
             const result = {
                 results: response
