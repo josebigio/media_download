@@ -1,7 +1,8 @@
 import express from 'express';
 
 import { getVideo } from './utils'
-import {PORT, HOST} from './constants'
+import { PORT, HOST } from './constants'
+import { searchPodCast } from './external-apis'
 
 // App
 const app = express();
@@ -19,6 +20,24 @@ app.get('/audio', (req, res) => {
         console.log('done downloading video ', filePath);
         res.sendFile(filePath);
     });
+});
+
+app.get('/search', (req, res) => {
+    const query = req.param('query')
+    if (!query) {
+        res.send("missing querry param");
+        return;
+    }
+    searchPodCast(query, 5)
+        .then(response => {
+            const result = {
+                items: response
+            }
+            res.send(result);
+        })
+        .catch(error => {
+            res.status(400).send(error);
+        })
 });
 
 app.listen(PORT, HOST);
