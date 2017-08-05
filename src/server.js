@@ -2,7 +2,7 @@ import express from 'express';
 
 import { getVideo } from './utils'
 import { PORT, HOST } from './constants'
-import { searchVideo } from './external-apis'
+import { searchVideo, getInfo, getComments } from './external-apis'
 
 // App
 const app = express();
@@ -29,6 +29,42 @@ app.get('/search', (req, res) => {
         return;
     }
     searchVideo(query, 10)
+        .then(response => {
+            const result = {
+                results: response
+            }
+            res.send(result);
+        })
+        .catch(error => {
+            res.status(400).send(error);
+        })
+});
+
+app.get('/info', function (req, res) {
+    var query = req.param('id');
+    if (!query) {
+        res.send("missing querry param id");
+        return;
+    }
+    getInfo(query)
+        .then(response => {
+            const result = {
+                results: response
+            }
+            res.send(result);
+        })
+        .catch(error => {
+            res.status(400).send(error);
+        })
+});
+
+app.get('/comments', function (req, res) {
+    var query = req.param('id');
+    if (!query) {
+        res.send("missing querry param id");
+        return;
+    }
+    getComments(query)
         .then(response => {
             const result = {
                 results: response
